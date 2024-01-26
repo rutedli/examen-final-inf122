@@ -1,10 +1,14 @@
 /* eslint-disable jsx-a11y/alt-text */
 "use client"
 
-import Image from "next/image";
-import style from "./pokedex.module.css";
-import { useEffect, useState } from "react";
+import React from 'react';
+import Image from 'next/image';
+import style from './pokedex.module.css';
+import { useEffect, useState } from 'react';
 
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 function Poke(){
     const [pokemon,setPokemon]=useState("/vercel.svg");
     const [nombre, setNombre]=useState("esperando");
@@ -40,30 +44,56 @@ function Poke(){
         });
 
     },[]);
-    return(
+    return (
         <div className={style.contenedor}>
-            <h2>My Pokemon</h2>
-            <br/>
-            <br/>
-            <br/>
-            <h1>{nombre}</h1>
-            <Image src={pokemon} height={500} width={500} />
-            
-            <br/>
-            <h2>About</h2>  
-             <h1>type:{type},{type1}</h1>
-             <h1>Height:{height}</h1>
-             <h1>Weight:{weight}kg</h1>
-             <h1>Abilities:{abilities}, {abilities1}, {abilities2}</h1>
-            <br/>
-            <h2>Stats</h2>
-            <h1>Hp:{hp}</h1>
-            <h1>Attack:{attack}</h1>
-            <h1>Defense:{defense}</h1>
-            <h1>Speed:{speed}</h1>
-            
+          <h2 className={style.title}>My Pokemon</h2>
+          <h1 className={style.title}>{capitalizeFirstLetter(nombre)}</h1>
+          <div className={style.imageContainer}>
+            <Image src={pokemon} height={150} width={150} />
+          </div>
+          <div className={style.about}>
+            <h2 className={style.subtitle}>About</h2>
+            <div>
+              <strong>Type:</strong> {type}, {type1}
+            </div>
+            <div>
+              <strong>Height:</strong> {height}m
+            </div>
+            <div>
+              <strong>Weight:</strong> {weight}kg
+            </div>
+            <div>
+              <strong>Abilities:</strong> {abilities}, {abilities1}, {abilities2}
+            </div>
+          </div>
+          <div className={style.stats}>
+            <h2 className={style.subtitle}>Stats</h2>
+            <div className={style.stat}>
+              <label>
+                <strong>Hp:</strong>
+              </label>
+              <h1>{hp}</h1>
+            </div>
+            <div className={style.stat}>
+              <label>
+                <strong>Attack:</strong>
+              </label>
+              <h1>{attack}</h1>
+            </div>
+            <div className={style.stat}>
+              <label>
+                <strong>Defense:</strong>
+              </label>
+              <h1>{defense}</h1>
+            </div>
+            <div className={style.stat}>
+              <label>
+                <strong>Speed:</strong>
+              </label>
+              <h1>{speed}</h1>
+            </div>
+          </div>
         </div>
-
-    )
+      );
 }
  export default Poke;

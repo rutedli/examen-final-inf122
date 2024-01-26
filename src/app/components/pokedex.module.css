@@ -1,0 +1,54 @@
+/* pokedex.module.css */
+
+.contenedor {
+    background-color: #f8f8f8;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .title {
+    margin: 10px 0;
+    font-size: 24px;
+    
+  }
+  
+  .subtitle {
+    margin-bottom: 10px;
+    color: #ff4500;
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  
+  .imageContainer {
+    margin: 20px auto;
+  }
+  
+  .about {
+    text-align: left;
+    margin-bottom: 20px;
+  }
+  
+  .about strong {
+  }
+  
+  .stats {
+    text-align: left;
+  }
+  
+  .stat {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .stat label {
+    font-weight: bold;
+    font-zice:5px;
+  }
+  
