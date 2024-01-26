@@ -23,24 +23,32 @@ function Poke(){
     const [attack, setAttack]=useState("Ataque");
     const [defense, setDefense]=useState("Defensa");
     const [speed, setSpeed]=useState("Velocidad");
-    const url="https://pokeapi.co/api/v2/pokemon/wigglytuff";
+    const url="https://pokeapi.co/api/v2/pokemon/40";
     useEffect(()=>{
         fetch(url)
-        .then(res=>res.json())
-        .then(data=>{
-            setPokemon(data.sprites.front_default),
-            setNombre(data.species.name),
-            setType(data.types[0].type.name),
-            setType1(data.types[1].type.name),
-            setHeight(data.height),
-            setWeight(data.weight),
-            setAbilities(data.abilities[0].ability.name),
-            setAbilities1(data.abilities[1].ability.name),
-            setAbilities2(data.abilities[2].ability.name),
-            setHp(data.stats[0].base_stat),
-            setAttack(data.stats[1].base_stat),
-            setDefense(data.stats[2].base_stat),
-            setSpeed(data.stats[5].base_stat)
+    .then(res => res.json())
+    .then(data => {
+        setPokemon(data.sprites.front_default);
+        setNombre(data.species.name);
+        setType(data.types[0].type.name);
+        if(data.types.length > 1){
+          setType1(data.types[1].type.name);
+        }
+        setHeight(data.height);
+        setWeight(data.weight);
+        if(data.abilities.length > 0){
+          setAbilities(data.abilities[0].ability.name);
+        }
+        if(data.abilities.length > 1){
+          setAbilities1(data.abilities[1].ability.name);
+        }
+        if(data.abilities.length > 2){
+          setAbilities2(data.abilities[2].ability.name);
+        }
+        setHp(data.stats[0].base_stat);
+        setAttack(data.stats[1].base_stat);
+        setDefense(data.stats[2].base_stat);
+        setSpeed(data.stats[5].base_stat);
         });
 
     },[]);
